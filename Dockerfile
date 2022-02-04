@@ -19,4 +19,4 @@ ENV USERNAME=$USERNAME
 ARG PASSWORD
 ENV PASSWORD=$PASSWORD
 
-ENTRYPOINT ["librespot", "--name", "$NAME", "-u", "$USERNAME", "-p", "$PASSWORD", "-B", "pipe", "-d", "/var/config/pipefifo", "-AP", "--disable-audio-cache"] 
+ENTRYPOINT /usr/bin/librespot --name "$NAME" -u "$USERNAME" -p "$PASSWORD" -B pipe -d /var/config/pipefifo -AP --disable-audio-cache
