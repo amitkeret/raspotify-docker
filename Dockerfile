@@ -10,10 +10,9 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+volume /var/config
 RUN mkfifo /var/config/pipefifo
 
 ENV NAME RaspotifySpeaker
-ENV BACKEND 'pipe'
-ENV DEVICE '/var/config/pipefifo'
 
-RUN /usr/bin/librespot --name "$NAME" -u "$USERNAME" -p "$PASSWORD" $BACKEND $DEVICE -AP --disable-audio-cache 
+RUN /usr/bin/librespot --name "$NAME" -u "$USERNAME" -p "$PASSWORD" -B pipe -d /var/config/pipefifo -AP --disable-audio-cache 
