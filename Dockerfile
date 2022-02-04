@@ -13,7 +13,8 @@ RUN apt-get update && \
 VOLUME /var/config
 RUN mkfifo /var/config/pipefifo
 
-ENV NAME RaspotifySpeaker
+ARG NAME="RaspotifySpeaker"
+ENV NAME=$NAME
 ARG USERNAME
 ENV USERNAME=$USERNAME
 ARG PASSWORD
