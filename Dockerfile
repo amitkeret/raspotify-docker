@@ -14,5 +14,9 @@ VOLUME /var/config
 RUN mkfifo /var/config/pipefifo
 
 ENV NAME RaspotifySpeaker
+ARG USERNAME
+ENV USERNAME=$USERNAME
+ARG PASSWORD
+ENV PASSWORD=$PASSWORD
 
-RUN /usr/bin/librespot --name "$NAME" -u "$USERNAME" -p "$PASSWORD" -B pipe -d /var/config/pipefifo -AP --disable-audio-cache 
+ENTRYPOINT ["librespot", "--name", "$NAME", "-u", "$USERNAME", "-p", "$PASSWORD", "-B", "pipe", "-d", "/var/config/pipefifo", "-AP", "--disable-audio-cache"] 
