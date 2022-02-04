@@ -10,7 +10,7 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-volume /var/config
+VOLUME /var/config
 RUN mkfifo /var/config/pipefifo
 
 ENV NAME RaspotifySpeaker
